@@ -1,0 +1,110 @@
+.bg {
+ z-index: -2;
+ position: absolute;
+}
+
+.descSec {
+ height: 720px;
+}
+
+.headphones {
+ position: relative;
+ width: 370px;
+ height: 385px;
+ top: 40px;
+ left: 50%;
+ transform: translateX(-50%) scale(1.2)
+}
+
+.aboutSublime {
+ opacity: 70%;
+ font-size: 25px;
+ font-weight: 30;
+ text-shadow: 0 0 9px rgba(255, 255, 255, 0.29);
+ width: 770px;
+ position: relative;
+ left: 50%;
+ top: 70px;
+ transform: translateX(-50%);
+ text-align: justify;
+ letter-spacing: 1.5px;
+ line-height: 32px;
+}
+
+.audiosSec {
+ height: 800px;
+}
+
+.audiosSec h1,
+.teamSec .teamSecTitle {
+ position: relative;
+ width: fit-content;
+ left: 50%;
+ transform: translateX(-50%);
+ top: 110px;
+ font-size: 43px;
+}
+
+.audiosContainer {
+ display: grid;
+ grid-template-columns: 30% 30% 30%;
+ column-gap: 60px;
+ row-gap: 40px;
+ position: relative;
+ left: 50%;
+ top: 170px;
+ width: fit-content;
+ transform: translateX(-50%)
+}
+
+.teamSec {
+ position: relative;
+ top: 100px;
+ height: 1500px
+}
+
+.workersContainer {
+ display: grid;
+ grid-template-columns: 30% 30% 30%;
+ position: relative;
+ left: 50%;
+ top: 170px;
+ transform: translateX(-50%);
+ width: fit-content;
+ column-gap: 80px;
+ row-gap: 60px;
+}
+.contactSec {
+ padding-left:50px;
+ display:flex;
+ gap:180px;
+}
+.contactSecTitle {
+ font-size:71px;
+}
+.contactSec p {
+ font-size:23px;
+ font-weight:100;
+ text-align: justify;
+ width:533px
+}
+.contactSec button {
+ width: 294px;
+ height:85px;
+ border:1px #0FB7C1 solid;
+ border-radius:100px;
+ background-color:transparent;
+ font-size:28px;
+ font-weight:300;
+ font-family: '__Nunito_1bd2a6', '__Nunito_Fallback_1bd2a6';
+ color:white;
+ cursor:pointer;
+ position:relative;
+ top:60px;
+ transition-duration:.4s
+}
+
+.contactSec button:hover {
+ background-color: #0FB7C1;
+ color:#09000E;
+}

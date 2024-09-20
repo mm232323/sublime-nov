@@ -1,0 +1,28 @@
+.blueLinkBut,
+.redLinkBut {
+ border-radius: 100px;
+ padding:12px;
+ border-width:1px;
+ font-weight:100;
+ font-size:20px;
+ background-color:transparent;
+ transition-duration:.35s;
+ cursor:pointer;
+font-family: '__Nunito_1bd2a6', '__Nunito_Fallback_1bd2a6'
+}
+.blueLinkBut {
+ color:#348ADA;
+ border-color:#348ADA;
+}
+.blueLinkBut:hover {
+ background-color: #348ADA;
+ color:#09000E
+}
+.redLinkBut {
+ color:#EA3030;
+ border-color: #EA3030;
+}
+.redLinkBut:hover {
+ background-color: #EA3030;
+ color:#09000E
+}

@@ -1,0 +1,25 @@
+.workerContainer {
+ display:flex;
+ flex-direction:column;
+ gap:15px;
+ text-align:center
+}
+.workerContainer img {
+ border-radius:50%;
+ filter:grayscale(1);
+ cursor:default;
+ transition-duration:.5s;
+ transition-timing-function: cubic-bezier(.6,0,.32,1.01);
+}
+.workerContainer img:hover {
+ transform: scale(1.1)
+}
+.workerContainer .workerName {
+ font-size:40px;
+ align-items: center;
+ font-weight:300;
+}
+.workerContainer p {
+ opacity:70%;
+ font-size:18px;
+}

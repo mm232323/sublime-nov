@@ -1,0 +1,39 @@
+.header {
+ display:flex;
+ width:98%;
+ justify-content: center;
+ gap:250px;
+ align-items:center;
+ padding:0 30px 5px;
+}
+.headerContainer {
+ width:100%;
+ background-color: rgba(255, 255, 255, 0.06);
+ border-bottom:1px rgba(255, 255, 255, 0.74) solid;
+ display: flex;
+ justify-content: center;
+}
+.header .container {
+ display:flex;
+ flex-direction: row;
+ align-items: center;
+ gap:55px;
+}
+.header .container img {
+ justify-content:center
+}
+.header h3 {
+ font-weight:100;
+ cursor:pointer;
+ font-size:25px;
+ transition-duration:.4s;
+ color:white;
+}
+.header h3:hover {
+ transform:scale(0.95)
+}
+
+.header .forms {
+ display:flex;
+ gap:20px
+}

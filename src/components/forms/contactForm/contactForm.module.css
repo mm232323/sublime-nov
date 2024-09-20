@@ -1,0 +1,60 @@
+.contactForm {
+ display:flex;
+ flex-direction:column;
+ gap:20px;
+}
+.contactForm input,
+.contactForm textarea {
+ background-color:#09000E;
+ color:white;
+ font-weight:200;
+ width:459px;
+ height:65px;
+ border:1px white solid;
+ border-radius:18px;
+ padding-left:15px;
+ transition-duration:.4s;
+ font-family:'__Nunito_1bd2a6', '__Nunito_Fallback_1bd2a6';
+}
+.contactForm input:focus,
+.contactForm textarea:focus,
+.contactForm select:focus {
+ outline:0px white solid;
+}
+.contactForm textarea {
+ min-height:100px;
+ max-height:199px;
+ max-width:459px;
+ min-width:459px;
+ padding-top:15px;
+ padding-right:20px;
+}
+.contactForm input::placeholder,
+.contactForm textarea::placeholder {
+ opacity:60%;
+ font-size:20px;
+ font-weight:200;
+}
+.contactBut {
+ width:459px;
+ height:65px;
+ border-radius:18px;
+ border:none;
+ background-image:linear-gradient(to right,#0A0918,#0F0212);
+ transition-duration:.4s;
+ font-family:'__Nunito_1bd2a6', '__Nunito_Fallback_1bd2a6';
+ color:white;
+ font-size:30px;
+ font-weight:100;
+ cursor:pointer;
+}
+.contactBut:hover {
+ color:#0A0918;
+ background: white;
+}
+.errorMes {
+ color:crimson;
+ font-size:16px;
+ font-weight:100;
+ padding-bottom:5px;
+}

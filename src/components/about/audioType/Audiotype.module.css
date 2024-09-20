@@ -1,0 +1,31 @@
+.audioTypeContainer {
+ width:360px;
+ height:300px;
+ border-style: solid;
+ border-radius:17px;
+ padding:30px;
+ display:flex;
+ flex-direction:column;
+ gap:15px;
+ cursor:default;
+ transition-duration:.4s
+}
+.audioTypeContainer:hover {
+ background-color: white;
+ box-shadow:5px 5px 25px 0 rgba(255,255,255,0.19)
+}
+.audioTypeContainer span {
+ font-weight:500;
+ font-size:43px;
+ text-transform: capitalize;
+}
+.audioTypeContainer p {
+ text-align: justify;
+ margin-bottom:50px;
+ font-size:16px;
+}
+.audioTypeContainer .titling {
+ display:flex;
+ gap:20px;
+ align-items: center;
+}
