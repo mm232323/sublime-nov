@@ -21,7 +21,9 @@ export default function Header({
             </Button>
             <div className={styles.container}>
               <h3>about</h3>
-              <Image src="/logo.svg" alt="logo" width={100} height={100} />
+              <Link href="/">
+                <Image src="/logo.svg" alt="logo" width={100} height={100} />
+              </Link>
               <Link href="/contact">
                 <h3>contact</h3>
               </Link>

@@ -1,0 +1,110 @@
+.navContainerWide,
+.navContainerNarrow {
+ position:relative;
+ width:234px;
+ height:767px;
+ background-color:rgba(255, 255, 255, 0.06);
+ backdrop-filter: blur(10px);
+ transition-duration:.3s;
+}
+.navContainerNarrow {
+ width:100px;
+}
+.logo,
+.miniLogo {
+ align-self:center;
+ width:120px;
+ height:120px;
+ transition-duration: .4s;
+}
+.miniLogo {
+ width:80px;
+ height:80px;
+}
+.linksContainer {
+ display:flex;
+ flex-direction:column;
+ gap:31px;
+ padding-left:25px;
+ position:relative;
+ top:40px;
+}
+.authBut,
+.authButMini {
+ background-color:white;
+ border:none;
+ border-radius:100px;
+ width:159px;
+ height:50px;
+ color:#24062F;
+ font-weight: 200;
+ font-size:19px;
+ margin-bottom: -60px;
+ cursor:pointer;
+ transition-duration:.4s;
+}
+.authBut:hover,
+.authButMini:hover {
+ background-color:transparent;
+ border:1px white solid;
+ color:white;
+}
+.authButMini {
+ width: 50px;
+ position:relative;
+ left:50%;
+ transform:translateX(-50%)
+}
+.moreInfo {
+ display:flex;
+ flex-direction: column;
+ gap:5px;
+ position:relative;
+ top:90px;
+ width:100%;
+ align-items: center;
+}
+.extraLinks {
+ display:flex;
+ align-items: center;
+ gap:20px;
+}
+.extraLinks h1 {
+ font-size:13px;
+ font-weight:200;
+ color:white;
+ text-decoration: none;
+ transition-duration:.4s;
+}
+.extraLinks h1:hover {
+ opacity:80%;
+}
+.copyright {
+ width:135px;
+ height:15px;
+}
+.copyrightmini {
+ width:71px;
+ height:43px;
+}
+.toggleArrow,
+.toggleArrowMini {
+ transform:scale(-1);
+ position:absolute;
+ right:15px;
+ top:16px;
+ cursor:pointer;
+ transition-duration:.4s;
+}
+
+.toggleArrow:hover {
+ transform:scale(1)
+}
+.toggleArrowMini {
+ transform:scale(1);
+ top:15px;
+ right:5px
+}
+.toggleArrowMini:hover {
+ transform:scale(-1)
+}

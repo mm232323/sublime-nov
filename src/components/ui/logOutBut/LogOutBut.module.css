@@ -1,0 +1,31 @@
+.logOutBut,
+.miniLogOutBut {
+ background-color:white;
+ border:none;
+ border-radius:100px;
+ width:159px;
+ height:50px;
+ color:#24062F;
+ font-weight: 200;
+ font-size:19px;
+ cursor:pointer;
+ transition-duration:.4s
+}
+.icon {
+ color:#09000E;
+}
+.logOutBut:hover,
+.miniLogOutBut:hover {
+ .icon {
+  color:white
+ }
+ background-color:transparent;
+ border:1px white solid;
+ color:white;
+}
+.miniLogOutBut {
+ width:50px;
+ position:relative;
+ left:50%;
+ transform:translateX(-50%)
+}

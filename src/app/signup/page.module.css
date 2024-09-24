@@ -25,3 +25,19 @@
  align-items: center;
  justify-content: center;
 }
+.devicesStyle1,
+.devicesStyle2 {
+ position:absolute;
+}
+.devicesStyle1 {
+ bottom:-50px;
+ left:-30px;
+ width: 152px;
+ height:128px;
+}
+.devicesStyle2 {
+ top:-50px;
+ right:-30px;
+ width:165px;
+ height:184px;
+}

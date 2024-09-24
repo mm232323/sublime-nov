@@ -1,0 +1,43 @@
+.pageContainer {
+ height:900px
+}
+.pageTitle {
+ font-weight:300;
+ position:relative;
+ left:50%;
+ transform:translateX(-50%);
+ top:70px;
+ width:fit-content;
+ font-size:27px;
+}
+.loginContainer {
+ background-color: rgba(255, 255, 255, 0.08);
+ width:781px;
+ height:526px;
+ border-radius:31px;
+ border:1px white solid;
+ position:relative;
+ left:50%;
+ top:50%;
+ transform:translate(-50%,-55%);
+ padding-left:25px;
+ display:flex;
+ align-items: center;
+ justify-content: center;
+}
+.devicesStyle1,
+.devicesStyle2 {
+ position:absolute;
+}
+.devicesStyle1 {
+ bottom:-50px;
+ left:-30px;
+ width: 152px;
+ height:128px;
+}
+.devicesStyle2 {
+ top:-50px;
+ right:-30px;
+ width:165px;
+ height:184px;
+}

@@ -1,6 +1,7 @@
 "use server";
 import { redirect } from "next/navigation";
 import { validate } from "deep-email-validator";
+import { signIn } from "next-auth/react";
 export async function signup(
   state: unknown,
   event: Iterable<readonly [PropertyKey, unknown]>
@@ -35,11 +36,28 @@ export async function signup(
   });
   const isExist = (await checkUser.json()).isExist;
   if (isExist) return ["emailExists"];
-  const response = await fetch("http://localhost:5800/auth/new-user", {
+  await fetch("http://localhost:5800/auth/new-user", {
     method: "POST",
     body: JSON.stringify(userData),
     headers: {
       "Content-Type": "application/json",
     },
   });
+  redirect("/login");
+}
+export async function login(
+  state: unknown,
+  event: Iterable<readonly [PropertyKey, unknown]>
+) {
+  const userData = Object.fromEntries(event) as {
+    email: string;
+    password: string;
+  };
+  const res = await signIn("credentials", {
+    email: userData.email,
+    password: userData.password,
+    redirect: false,
+  });
+  if (res?.error) console.log({ message: res.error });
+  redirect("/");
 }

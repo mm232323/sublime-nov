@@ -1,0 +1,17 @@
+.filtersContainer {
+ display: flex;
+ gap:20px;
+ position:relative;
+ width:fit-content;
+ top:30px;
+ margin-bottom:0;
+ padding-bottom:0;
+}
+.filter {
+ width:fit-content;
+ height:fit-content;
+ padding:15px;
+ border-radius:3px;
+ background-color: rgba(255,255,255,.06);
+ cursor:pointer;
+}
