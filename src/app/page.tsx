@@ -14,9 +14,12 @@ import { albumType } from "@/util/types";
 import Album from "@/components/home/album/Album";
 import { fetchAlbums } from "../../actions/main";
 import { motion } from "framer-motion";
+import Container from "@/components/layout/pageContainer/Container";
+import { fetchAvatar } from "../../actions/user";
 export default function Home() {
   const { data: session } = useSession();
   const [toggleFilter, setToggleFilter] = useState(false);
+  const [avatar, setAvatar] = useState("");
   const [albums, setAlbums] = useState<albumType[]>([]);
   const [searchText, SetSearchText] = useState<string | undefined>("")!;
   const searchRef = useRef<HTMLInputElement>(null);
@@ -25,15 +28,21 @@ export default function Home() {
       const albums = await fetchAlbums();
       setAlbums(albums);
     };
+    const getAvatar = async () => {
+      if (session?.user) {
+        const avatar = await fetchAvatar(session?.user?.email);
+        setAvatar(avatar);
+      }
+    };
     getAlbums();
-  }, []);
-  console.log(albums);
+    getAvatar();
+  }, [session?.user, session?.user?.email]);
   const handleToggleFilter = () => setToggleFilter((prevTog) => !prevTog);
   const handleSeachText = () => {
     SetSearchText(searchRef.current?.value);
   };
   return (
-    <main className={styles.mainContainer}>
+    <Container>
       <NavBar isAuthed={Boolean(session?.user)} />
       <div className={styles.pageContainer}>
         <div className={styles.head}>
@@ -66,13 +75,19 @@ export default function Home() {
           />
           {session?.user ? (
             <>
-              <Image
-                src={!session.user.image ? "/avatar.svg" : session.user.image}
-                alt=""
-                width={50}
-                height={50}
-                className={styles.avatar}
-              />
+              <Link href="/profile">
+                <Image
+                  src={
+                    !avatar
+                      ? "/avatar.svg"
+                      : `http://localhost:5800/avatars/${avatar}`
+                  }
+                  alt=""
+                  width={50}
+                  height={50}
+                  className={styles.avatar}
+                />
+              </Link>
               <LogOutBut toggleNav={false} />
             </>
           ) : (
@@ -96,11 +111,11 @@ export default function Home() {
             {albums
               .filter((album) => album.name.toLowerCase().includes(searchText!))
               .map((album) => (
-                <Album album={album} key={Math.random()} />
+                <Album album={album} size="large" key={Math.random()} />
               ))}
           </motion.div>
         </center>
       </div>
-    </main>
+    </Container>
   );
 }

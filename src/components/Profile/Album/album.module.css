@@ -1,0 +1,37 @@
+.albumContainer {
+ width:362px;
+ height:132px;
+ border-radius:19px;
+ border:.3px rgba(255,255,255,.4) solid;
+ position:relative;
+ display:flex;
+ justify-content: center;
+ align-items: center;
+ padding-left:10px;
+ gap:28px;
+ color:white;
+ transition-duration: .4s;
+}
+.albumContainer:hover {
+ background-color: white;
+ color:#090211;
+}
+.imgContainer {
+ width:255px;
+ height: 103px;
+ border-radius:8px;
+ display:flex;
+ justify-content: center;
+ align-items: center;
+ overflow: hidden;
+ position:relative;
+ box-shadow:0 0 8px 0 rgba(255,255,255,.3)
+}
+.details p {
+ font-size:13px;
+}
+.reactions {
+ display:flex;
+ align-items:center;
+ gap:15px;
+}

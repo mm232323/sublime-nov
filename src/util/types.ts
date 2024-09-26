@@ -17,3 +17,16 @@ export interface albumType {
   imgUrl: string;
   author: string;
 }
+export interface userType {
+  name: string;
+  email: string;
+  password: string;
+  gender: string;
+  phone: number;
+  followers: number;
+  medals: string[];
+  jobTitle: string;
+  avatarName: string;
+  albums: albumType[];
+  follows: string[];
+}

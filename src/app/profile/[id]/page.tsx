@@ -1,32 +1,39 @@
 import React from "react";
 import styles from "./page.module.css";
-import NavBar from "@/components/layout/navBar/NavBar";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
 import Container from "@/components/layout/pageContainer/Container";
+import NavBar from "@/components/layout/navBar/NavBar";
+import Image from "next/image";
 import { FaPhone } from "react-icons/fa6";
-import { FaWhatsapp } from "react-icons/fa";
-import { FaTransgender } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa6";
+import { FaTransgender } from "react-icons/fa6";
 import { RiUserFollowFill } from "react-icons/ri";
+import { albumType } from "@/util/types";
 import Album from "@/components/home/album/Album";
-import { albumType, userType } from "@/util/types";
-import Avatar from "@/components/Profile/Avatar/Avatar";
 import Rank from "@/components/Profile/Rank/Rank";
 import Medals from "@/components/Profile/Medals/medals";
 import UserAlbum from "@/components/Profile/Album/album";
-import Image from "next/image";
-export default async function Profile() {
-  const session = (await getServerSession())!;
-  if (!session) redirect("/login");
-  if (!session.user) redirect("/login");
-  const userRes = await fetch("http://localhost:5800/user/get-user", {
+import FollowButton from "@/components/Profile/FollowButton/FollowButton";
+import { getServerSession } from "next-auth";
+export default async function Profile({ params }: { params: { id: string } }) {
+  const id = params.id;
+  const session: { user: { email: string } } = (await getServerSession())!;
+  const idRes = await fetch("http://localhost:5800/user/get-user", {
     method: "POST",
     body: JSON.stringify({ email: session.user.email }),
     headers: {
       "Content-Type": "application/json",
     },
   });
-  const { user }: { user: userType } = await userRes.json();
+  const myUserRes = (await idRes.json()).user;
+  const userId = myUserRes.userId;
+  const userRes = await fetch("http://localhost:5800/user/get-user-byId", {
+    method: "POST",
+    body: JSON.stringify({ id }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const user = (await userRes.json()).user;
   return (
     <Container>
       <NavBar isAuthed={true} />
@@ -41,14 +48,18 @@ export default async function Profile() {
         <div className={styles.userInfoContainer}>
           <div className={styles.personalInfo}>
             <div className={styles.head}>
-              <Avatar
-                href={
-                  !user.avatarName
-                    ? "/avatar.svg"
-                    : `http://localhost:5800/avatars/${user.avatarName}`
-                }
-                email={user.email}
-              />
+              <div className={styles.avatarcontainer}>
+                <Image
+                  src={
+                    !user.avatarName
+                      ? "/avatar.svg"
+                      : `http://localhost:5800/avatars/${user.avatarName}`
+                  }
+                  alt="avatar"
+                  width={160}
+                  height={160}
+                />
+              </div>
               <div className={styles.titles}>
                 <h1>{user.name.split(" ").slice(0, 3).join(" ")}</h1>
                 <p>{user.jobTitle}</p>
@@ -99,9 +110,17 @@ export default async function Profile() {
               )}
             </div>
           </div>
-
-          <Rank email={user.email!} type="stranger" />
-          <Medals email={user.email!} type="stranger" />
+          <div className={styles.worldUser}>
+            <div className={styles.awards}>
+              <Rank email={user.email!} type="user" />
+              <Medals email={user.email!} type="user" />
+            </div>
+            <FollowButton
+              follower={userId}
+              following={id}
+              followerUserFollows={myUserRes.follows}
+            />
+          </div>
         </div>
         <div className={styles.albumsMainContainer}>
           {user.albums.length ? (
@@ -111,7 +130,7 @@ export default async function Profile() {
                 <p>({user.albums.length})</p>
               </div>
               <div className={styles.albumsContainer}>
-                {user.albums.map((album) => (
+                {user.albums.map((album: albumType) => (
                   <UserAlbum album={album} key={album.imgUrl} />
                 ))}
               </div>

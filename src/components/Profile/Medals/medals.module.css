@@ -1,0 +1,13 @@
+.medalsContainer {
+ position:relative;
+ width:324px;
+ height:200px;
+ border:.3px rgba(255,255,255,.5) solid;
+ align-self: center;
+ top:50px;
+ border-radius: 14px;
+ display:grid;
+ grid-template-columns: 25% 25% 25% 25%;
+ justify-items: center;
+ align-items: center;
+}

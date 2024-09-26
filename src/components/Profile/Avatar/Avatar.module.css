@@ -1,0 +1,36 @@
+.avatarContainer {
+ position:relative;
+ width:160px;
+ height:160px;
+ border-radius:80px;
+ overflow:hidden
+}
+.avatarUploader {
+ width:155px;
+ height:160px;
+ background-color:#0000009d;
+ opacity: 0;
+ position:absolute;
+ border-radius:90px;
+ transition-duration: .3s;
+ left:50%;
+ top:50%;
+ transform:translate(-50%,-51.3%);
+ display:flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction:column
+}
+.avatarUploader:hover {
+ opacity:100;
+}
+.avatarUploader p {
+ font-size:13px;
+ font-weight:300
+}
+.avatarUploader .uploadBut {
+ cursor:pointer;
+ color: #14B7C2;
+ font-weight: 200;
+ font-size: 9;
+}
