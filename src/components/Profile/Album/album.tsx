@@ -6,11 +6,11 @@ import { IoEye, IoHeart } from "react-icons/io5";
 import Link from "next/link";
 export default function UserAlbum({ album }: { album: albumType }) {
   return (
-    <Link href="/album">
+    <Link href={`/album/${album.id}`}>
       <div className={styles.albumContainer}>
         <div className={styles.imgContainer}>
           <Image
-            src={"/Albums" + album.imgUrl}
+            src={"http://localhost:5800/albums/" + album.imgUrl}
             alt="album img"
             width={104}
             height={149}
@@ -21,9 +21,9 @@ export default function UserAlbum({ album }: { album: albumType }) {
           <p>{album.desc.slice(0, 100) + "..."}</p>
           <div className={styles.reactions}>
             <IoHeart />
-            23.6k
+            {album.likes}
             <IoEye />
-            62.2k
+            {album.views}
           </div>
         </div>
       </div>

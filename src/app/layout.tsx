@@ -23,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nunito.className}>
+        <div className="modal"></div>
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>

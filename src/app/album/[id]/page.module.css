@@ -1,0 +1,86 @@
+.pageContainer {
+ display: flex;
+ flex-direction:column;
+
+}
+.albumDetailsContainer {
+ width:1150px;
+ height:545px;
+ border-radius:25px;
+ border:1px rgba(255,255,255,.5) solid;
+ background-color: rgba(255,255,255,.03);
+ margin:30px;
+ padding-top:20px;
+ padding-left:48px;
+ display:flex;
+ flex-direction:column;
+ gap:20px;
+}
+.detailsContainer {
+ display:flex;
+ gap: 20px;
+}
+.imgContainer {
+ width:fit-content;
+ height:298px;
+ border-radius:36px;
+ box-shadow:0 15px 48.9px 0 rgba(255,255,255,.31);
+ position:relative;
+ overflow: hidden; 
+}
+.textContainer {
+ display:flex;
+ flex-direction:column;
+ gap:20px;
+}
+.textContainer p {
+ font-weight:200;
+ opacity:70%;
+ letter-spacing: 2px;
+ width:611px;
+ text-align: justify;
+ font-size:15px;
+}
+.links {
+ font-weight:300;
+ display:flex;
+ gap:20px;
+ align-items: center;
+}
+.links p {
+ font-weight: 200;
+}
+
+.actions_reactions {
+ display:flex;
+ position:relative;
+ top:30px;
+ align-items: center;
+ gap:800px;
+}
+.actions_reactions .reactions {
+ display:flex;
+ gap:15px;
+}
+.actions {
+ display:flex;
+ gap:15px;
+}
+.actionIcon {
+ padding:20px;
+ border-radius:22px;
+}
+.extraAlbums {
+ width:1150px;
+ height:367px;
+ border-radius:25px;
+ border:1px rgba(255,255,255,.5) solid;
+ background-color: rgba(255,255,255,.03);
+ padding-top:20px;
+ padding-left:28px;
+ margin:30px;
+ margin-top:10px;
+}
+.extraAlbums h1 {
+ margin-bottom:15px;
+}

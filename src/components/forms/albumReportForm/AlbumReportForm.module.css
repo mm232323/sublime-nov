@@ -1,0 +1,41 @@
+.reportForm {
+ display:flex;
+ flex-direction:column;
+ gap:12px;
+}
+.reportForm input,
+.reportForm textarea,
+.reportForm button {
+ width:484px;
+ height:63px;
+ border-radius:6px;
+ border:none;
+ background-color:rgba(0,0,0,.07);
+ transition-duration:.4s;
+ padding-left:15px;
+ font-weight:200;
+ font-family: '__Nunito_1bd2a6', '__Nunito_Fallback_1bd2a6';
+ font-size:15px;
+}
+.reportForm textarea {
+ min-width:484px;
+ max-width: 484px;
+ min-height:63px;
+ max-height:67px;
+ padding:15px;
+}
+.reportForm button {
+ background-color:#160F1B;
+ color:white;
+ font-family: '__Nunito_1bd2a6', '__Nunito_Fallback_1bd2a6';
+ font-weight: 200;
+ cursor:pointer
+}
+.reportForm input:focus,
+.reportForm textarea:focus {
+ background-color:rgba(0,0,0,.12);
+ outline:none;
+}
+.reportForm button:hover {
+ background-color:#211629;
+}

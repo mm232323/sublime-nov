@@ -1,0 +1,43 @@
+.albumContainer {
+ cursor:pointer;
+}
+.imgContainer {
+ width:230px;
+ height:230px;
+ overflow:hidden;
+ border-radius:15px;
+ box-shadow:0 7px 57px 0 rgba(255,255,255,.1);
+ display:flex;
+ justify-content: center;
+ align-items: center;
+ position:absolute;
+}
+.details {
+ opacity:0;
+ background-color:rgba(0,0,0,.55);
+ width:230px;
+ height:230px;
+ border-radius:15px;
+ display:flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ position:relative;
+ transition-duration:.35s;
+ z-index:5;
+ gap:10px;
+ color:white;
+ padding: 0 15px;
+}
+.details:hover {
+ opacity: 100%;
+}
+.extraDetails {
+ display:flex;
+ gap:7px;
+ align-items:center;
+}
+.details .author {
+ opacity:.7;
+ font-style: italic;
+}

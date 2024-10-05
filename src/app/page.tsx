@@ -16,6 +16,7 @@ import { fetchAlbums } from "../../actions/main";
 import { motion } from "framer-motion";
 import Container from "@/components/layout/pageContainer/Container";
 import { fetchAvatar } from "../../actions/user";
+import React from "react";
 export default function Home() {
   const { data: session } = useSession();
   const [toggleFilter, setToggleFilter] = useState(false);

@@ -1,0 +1,83 @@
+.formContainer {
+ display:flex;
+ flex-direction:column;
+ gap:18px;
+ margin:30px;
+}
+.formContainer input,
+.formContainer textarea,
+.formContainer select ,
+ .formContainer select option,
+.formContainer .imgUploadContainer { 
+ border:1px rgba(255,255,255,.4) solid;
+ width:1066px;
+ height:64px;
+ border-radius:7px;
+ background-color:rgba(255,255,255,.08);
+ color:white;
+ padding-left:16px;
+ font-weight:250;
+ font-family: '__Nunito_1bd2a6', '__Nunito_Fallback_1bd2a6';
+ transition-duration:.35s;
+}
+.formContainer button {
+ width:1066px;
+ height: 65px;
+ border-radius:7px;
+ background-color: rgba(24, 102, 204, 0.06);
+ border:1px rgba(255,255,255,.4) solid;
+ color:white;
+ font-family: '__Nunito_1bd2a6', '__Nunito_Fallback_1bd2a6';
+ font-size:20px;
+ font-weight:280;
+ cursor:pointer;
+ transition-duration: .35s;
+}
+.formContainer button:hover {
+ background-color: rgba(24,102,204,0.2);
+}
+.formContainer input:focus,
+.formContainer textarea:focus,
+.formContainer select:focus,
+.formContainer .imgUploadContainer:hover {
+ background-color:rgba(255,255,255,.2);
+ outline:none;
+}
+.formContainer textarea {
+ outline:none;
+ padding: 16px;
+ min-height: 64px;
+ max-height:302px;
+ min-width:1066px;
+ max-width:1066px;
+}
+.formContainer select {
+ background-color:#09000E;
+ color:white;
+}
+.formContainer select option {
+ border:none;
+ background-color:#09000E;
+ color:white;
+}
+.formContainer .imgUploadContainer {
+ padding:20px 0;
+ height:fit-content;
+ display:flex;
+ flex-direction:column;
+ align-items: center;
+ gap:25px;
+ justify-content: center;
+}
+.formContainer .imgUploadContainer span {
+ color:rgb(0, 162, 255);
+ cursor:pointer;
+}
+.imgReviewContainer {
+ width:200px;
+ height:200px;
+ border-radius:7px;
+ position:relative;
+ overflow:hidden;
+ border:1px rgba(255,255,255,.5) solid;
+}

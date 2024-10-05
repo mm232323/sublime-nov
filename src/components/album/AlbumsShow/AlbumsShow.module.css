@@ -1,0 +1,20 @@
+.controller {
+ display: flex;
+ align-items:center;
+ gap:20px;
+}
+.controller .albumsContainer {
+ position:relative;
+ display:flex;
+ gap:50px;
+ width:1000px;
+ overflow-x:scroll;
+ border-radius:12px;
+ text-align:center;
+}
+.controller .albumsContainer::-webkit-scrollbar {
+ display:none;
+}
+.arrowIco {
+ cursor:pointer;
+}

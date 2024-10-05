@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 export default function Filters() {
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const handleActivition = (filter: string) => {
-    console.log(filter);
     setActiveFilters((prevActives) => {
       let newCopy = [...prevActives];
       if (newCopy.includes(filter)) {

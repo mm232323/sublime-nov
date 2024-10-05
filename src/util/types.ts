@@ -16,6 +16,10 @@ export interface albumType {
   audioUrl: string;
   imgUrl: string;
   author: string;
+  id: string;
+  likes: number;
+  views: number;
+  links: string[];
 }
 export interface userType {
   name: string;
@@ -29,4 +33,15 @@ export interface userType {
   avatarName: string;
   albums: albumType[];
   follows: string[];
+  views: number;
+  likes: string[];
+}
+export interface albumInputsType {
+  title: string;
+  desc: string;
+  audio: File;
+  photo: File;
+  author: string;
+  type: string;
+  userEmail: string;
 }

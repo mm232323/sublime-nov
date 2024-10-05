@@ -1,0 +1,49 @@
+.audioplayerControler {
+ display: flex;
+ flex-direction:column;
+ gap:25px;
+ position:relative;
+ width:fit-content;
+ left:50%;
+ transform:translateX(-50%);
+ align-items: center;
+}
+.icon {
+ cursor:pointer;
+}
+.controls {
+ display:flex;
+ gap:20px;
+}
+.audiobar {
+ display:flex;
+ gap:10px;
+ align-items:center
+}
+.audiobar p {
+ opacity:70%
+}
+.audioProgresser {
+ width:900px;
+ height:12px;
+ border-radius:12px;
+ background-color: white;;
+ position:relative;
+}
+.audioFill {
+ height:12px;
+ position:absolute;
+ left:0;
+ top:0;
+ border-radius:12px;
+ background-color: #661B89;
+}
+.controlBall {
+ width:18px;
+ height:18px;
+ border-radius:9px;
+ position:absolute;
+ top:-4px;
+ box-shadow:6px 0 25px 0 rgba(0, 0, 0, 0.884);
+ background-color: white;
+}

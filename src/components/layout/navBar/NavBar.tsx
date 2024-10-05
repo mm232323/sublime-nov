@@ -14,12 +14,17 @@ import LogOutBut from "@/components/ui/logOutBut/LogOutBut";
 import { useState } from "react";
 export default function NavBar({ isAuthed }: { isAuthed: boolean }) {
   const [toggleNav, setToggleNav] = useState(false);
+  // const [scrollY, setScrollY] = useState(0);
+  // window.onscroll = () => {
+  // setScrollY(window.scrollY);
+  // };
   const handleToggle = () => setToggleNav((prevNav) => !prevNav);
   return (
     <div
       className={
         !toggleNav ? styles.navContainerWide : styles.navContainerNarrow
       }
+      // style={{ top: scrollY }}
     >
       <MdArrowRight
         color="white"

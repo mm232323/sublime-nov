@@ -33,8 +33,6 @@ const authOptions = {
           const exist = JSON.parse(await checkUser.json()) as unknown as {
             isExist: boolean;
           };
-          console.log(user);
-          console.log(exist);
           if (!exist.isExist || user.password !== password) return null;
           return user;
         } catch (error) {
