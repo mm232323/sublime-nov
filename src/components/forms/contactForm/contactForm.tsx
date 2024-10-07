@@ -4,8 +4,9 @@ import styles from "./contactForm.module.css";
 import { postContact } from "../../../../actions/main";
 import { useFormState } from "react-dom";
 import { useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 export default function ContactForm() {
-  const checkRef = useRef(null);
+  const checkRef = useRef<HTMLInputElement>(null);
   const [state, action] = useFormState(postContact, {
     errors: {
       contactName: "",
@@ -49,16 +50,31 @@ export default function ContactForm() {
         !state.contactEmail &&
         !state.contactPhone &&
         !state.contactMessage &&
-        checkRef?.current?.value
+        checkRef.current?.value
           ? "Submitting..."
           : "Submit"}
       </button>
-      <div>
-        <p className={styles.errorMes}>{state?.contactName}</p>
-        <p className={styles.errorMes}>{state?.contactEmail}</p>
-        <p className={styles.errorMes}>{state?.contactPhone}</p>
-        <p className={styles.errorMes}>{state?.contactMessage}</p>
-      </div>
+      <AnimatePresence>
+        {(state?.contactName ||
+          state?.contactEmail ||
+          state?.contactPhone ||
+          state?.contactMessage) && (
+          <motion.div
+            variants={{
+              show: { opacity: 1, filter: "blur(0)", x: 0 },
+              hide: { opacity: 0, filter: "blur(10px)", x: -30 },
+            }}
+            initial="hide"
+            animate="show"
+            exit="hide"
+          >
+            <p className={styles.errorMes}>{state?.contactName}</p>
+            <p className={styles.errorMes}>{state?.contactEmail}</p>
+            <p className={styles.errorMes}>{state?.contactPhone}</p>
+            <p className={styles.errorMes}>{state?.contactMessage}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </form>
   );
 }

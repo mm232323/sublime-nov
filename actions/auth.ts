@@ -11,6 +11,8 @@ export async function signup(
     name: string;
     password: string;
     phone: string;
+    job_title: string;
+    gender: string;
   };
   const errors = [];
   const isValidEmail = (await validate(userData.email)) as {
@@ -26,6 +28,8 @@ export async function signup(
   )
     errors.push("password");
   if (userData.phone.length !== 11) errors.push("phone");
+  if (userData.job_title.length <= 2) errors.push("job_title");
+  if (userData.gender == "Gender") errors.push("gender");
   if (errors.length) return errors;
   const checkUser = await fetch("http://localhost:5800/auth/check-user", {
     method: "POST",

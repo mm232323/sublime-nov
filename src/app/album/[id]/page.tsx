@@ -34,7 +34,9 @@ export default async function AlbumPage({
       "Content-Type": "application/json",
     },
   });
+  const albumsRes = await fetch("http://localhost:5800/random-albums");
   const album: albumType = await albumRes.json();
+  const albums: albumType[] = (await albumsRes.json()).albums;
   const audioRes = await axios.get(
     `http://localhost:5800/albums/${album.audioUrl}`,
     {
@@ -42,9 +44,6 @@ export default async function AlbumPage({
       responseType: "blob",
     }
   );
-  if (typeof window !== "undefined") {
-    const audioUrl = window.URL.createObjectURL(new Blob([audioRes.data]));
-  }
   return (
     <Container>
       <NavBar isAuthed={true} />
@@ -126,7 +125,15 @@ export default async function AlbumPage({
         </div>
         <div className={styles.extraAlbums}>
           <h1>Similar Albums</h1>
-          <AlbumsShow album={album} />
+          <AlbumsShow
+            albums={albums.filter((selectedAlbum) => {
+              if (selectedAlbum.id == album.id) return false;
+              for (let i = 0; i < selectedAlbum.types.length; i++) {
+                if (album.types.includes(selectedAlbum.types[i])) return true;
+              }
+              return false;
+            })}
+          />
         </div>
       </div>
     </Container>

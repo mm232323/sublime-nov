@@ -4,14 +4,15 @@
  gap:20px;
  align-self: center;
 }
-.signupForm input {
+.signupForm input, 
+.signupForm select {
  background-color:#09000E;
  color:white;
  font-weight:200;
  width:459px;
- height:65px;
- border:1px white solid;
- border-radius:32.5px;
+ height:45px;
+ border:.5px rgba(255,255,255,.5) solid;
+ border-radius:15.5px;
  padding-left:15px;
  transition-duration:.4s;
  font-family:'__Nunito_1bd2a6', '__Nunito_Fallback_1bd2a6';

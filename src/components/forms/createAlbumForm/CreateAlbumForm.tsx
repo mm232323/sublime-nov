@@ -8,6 +8,7 @@ import { SlCloudUpload } from "react-icons/sl";
 import { TiUpload } from "react-icons/ti";
 import Image from "next/image";
 import LoadingAndicator from "@/components/album/loadingIndicator/LoadingIndicator";
+import { IoClose } from "react-icons/io5";
 export default function CreateAlbumForm({ email }: { email: string }) {
   const [audioName, setAudioName] = useState("");
   const [imgReview, setImgReview] = useState<string | ArrayBuffer | null>(null);
@@ -42,6 +43,10 @@ export default function CreateAlbumForm({ email }: { email: string }) {
       setIsLoading(false);
     };
     reader.readAsDataURL(img!);
+  };
+  const handleRemoveImg = () => {
+    setImgReview(null);
+    imgRef.current?.files != null;
   };
   return (
     <form action={action} className={styles.formContainer}>
@@ -78,7 +83,15 @@ export default function CreateAlbumForm({ email }: { email: string }) {
         {isLoading && <LoadingAndicator />}
         {imgReview && !isLoading ? (
           <div className={styles.imgReviewContainer}>
-            <Image src={imgReview} alt="img review" width={200} height={200} />
+            <Image
+              src={imgReview as string}
+              alt="img review"
+              width={200}
+              height={200}
+            />
+            <div className={styles.remover} onClick={handleRemoveImg}>
+              <IoClose color="rgba(255,255,255,.7)" size={22} />
+            </div>
           </div>
         ) : (
           <TiUpload color="rgba(255,255,255,.6)" size={106} />

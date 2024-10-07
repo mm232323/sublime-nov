@@ -11,6 +11,7 @@
  overflow-x:scroll;
  border-radius:12px;
  text-align:center;
+ scrollbar-width: none;
 }
 .controller .albumsContainer::-webkit-scrollbar {
  display:none;

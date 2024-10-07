@@ -1,0 +1,70 @@
+.pageContainer {
+ width:1240px;
+ height:769px;
+ position:relative;
+}
+.head {
+ position:relative;
+ width:1240px;
+ height:82px;
+ background-color:rgba(255,255,255,.05);
+ display:flex;
+ align-items: center;
+ padding-left:50px;
+ gap:15px;
+}
+.searchIco {
+ position:absolute;
+ left:63px;
+}
+.searchingBar {
+ background-color:rgba(255,255,255,.075);
+ border:none;
+ width:769px;
+ height:56px;
+ border-radius:100px;
+ padding-left:50px;
+ color:white;
+ font-family:'__Nunito_1bd2a6', '__Nunito_Fallback_1bd2a6'
+}
+.searchingBar::placeholder {
+ opacity:60%;
+}
+.searchingBar:focus {
+ outline:none;
+}
+.filterIco {
+ padding:12px;
+ border-radius:25px;
+ cursor:pointer;
+}
+.avatar {
+ border-radius: 25px;
+ cursor:pointer;
+}
+.authBut {
+ background-color:white;
+ border:none;
+ border-radius:100px;
+ width:139px;
+ height:50px;
+ color:#24062F;
+ font-weight: 200;
+ font-size:19px;
+ cursor:pointer;
+ transition-duration:.4s;
+}
+.authBut:hover {
+ background-color:transparent;
+ border:1px white solid;
+ color:white;
+}
+.albumsContainer {
+ display:grid;
+ grid-template-columns: 30% 30% 30%;
+ width:fit-content;
+ position:relative;
+ column-gap:75px;
+ row-gap:30px;
+ transition-duration:.3s;
+}

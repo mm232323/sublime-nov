@@ -3,9 +3,18 @@ import React from "react";
 import styles from "./Filters.module.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
-export default function Filters() {
+export default function Filters({
+  onFiltering,
+}: {
+  onFiltering: (filters: string[]) => void;
+}) {
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const handleActivition = (filter: string) => {
+    if (activeFilters.includes(filter)) {
+      onFiltering(activeFilters.filter((fil) => fil !== filter));
+    } else {
+      onFiltering([...activeFilters, filter]);
+    }
     setActiveFilters((prevActives) => {
       let newCopy = [...prevActives];
       if (newCopy.includes(filter)) {
@@ -25,7 +34,7 @@ export default function Filters() {
     "puzzle",
     "philosophy",
     "history",
-    "religion",
+    "biography",
   ];
   return (
     <center>

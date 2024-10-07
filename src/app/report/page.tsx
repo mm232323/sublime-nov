@@ -3,7 +3,6 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import ReportForm from "@/components/forms/reportForm/reportForm";
-
 export default function ReportPage() {
   return (
     <main className={styles.pageContainer}>

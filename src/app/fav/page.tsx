@@ -1,25 +1,25 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
-import NavBar from "@/components/layout/navBar/NavBar";
-import { useSession } from "next-auth/react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
-import { IoSearch } from "react-icons/io5";
-import { FaFilter } from "react-icons/fa6";
-import Image from "next/image";
-import LogOutBut from "@/components/ui/logOutBut/LogOutBut";
-import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { useSession } from "next-auth/react";
+import Container from "@/components/layout/pageContainer/Container";
+import NavBar from "@/components/layout/navBar/NavBar";
+import { redirect } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
 import Filters from "@/components/home/filters/Filters";
-import { AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { IoSearch } from "react-icons/io5";
+import Image from "next/image";
+import { FaFilter } from "react-icons/fa6";
+import LogOutBut from "@/components/ui/logOutBut/LogOutBut";
+import { fetchAvatar, fetchUserFav } from "../../../actions/user";
 import { albumType } from "@/util/types";
 import Album from "@/components/home/album/Album";
-import { fetchAlbums } from "../../actions/main";
-import { motion } from "framer-motion";
-import Container from "@/components/layout/pageContainer/Container";
-import { fetchAvatar } from "../../actions/user";
-import React from "react";
-export default function Home() {
+export default function Favourite() {
   const { data: session } = useSession();
+  if (!session?.user) redirect("/signup");
+  const user = session.user as { email: string; password: string };
   const [toggleFilter, setToggleFilter] = useState(false);
   const [filters, setFilters] = useState<string[]>([]);
   const [avatar, setAvatar] = useState("");
@@ -28,18 +28,18 @@ export default function Home() {
   const searchRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     const getAlbums = async () => {
-      const albums = await fetchAlbums();
+      const albums = await fetchUserFav(user.email);
       setAlbums(albums);
     };
     const getAvatar = async () => {
       if (session?.user) {
-        const avatar = await fetchAvatar(session?.user?.email as string);
+        const avatar = await fetchAvatar(user.email);
         setAvatar(avatar);
       }
     };
     getAlbums();
     getAvatar();
-  }, [session?.user, session?.user?.email]);
+  }, [session?.user, user, user.email]);
   const handleToggleFilter = () => setToggleFilter((prevTog) => !prevTog);
   const handleSeachText = () => {
     SetSearchText(searchRef.current?.value);
@@ -50,7 +50,7 @@ export default function Home() {
   };
   return (
     <Container>
-      <NavBar isAuthed={Boolean(session?.user)} />
+      <NavBar isAuthed={true} />
       <div className={styles.pageContainer}>
         <div className={styles.head}>
           <IoSearch
@@ -117,24 +117,22 @@ export default function Home() {
             initial={{ y: toggleFilter ? 20 : 60 }}
             animate={{ y: toggleFilter ? 60 : 20 }}
           >
-            <AnimatePresence>
-              {albums
-                .filter((album) => {
-                  if (
-                    !album?.name
-                      ?.toLowerCase()
-                      .includes(searchText!.toLowerCase())
-                  )
-                    return false;
-                  for (let i = 0; i < filters.length; i++) {
-                    if (!album.types.includes(filters[i])) return false;
-                  }
-                  return true;
-                })
-                .map((album) => (
-                  <Album album={album} size="large" key={Math.random()} />
-                ))}
-            </AnimatePresence>
+            {albums
+              .filter((album) => {
+                if (
+                  !album?.name
+                    ?.toLowerCase()
+                    .includes(searchText!.toLowerCase())
+                )
+                  return false;
+                for (let i = 0; i < filters.length; i++) {
+                  if (!album.types.includes(filters[i])) return false;
+                }
+                return true;
+              })
+              .map((album) => (
+                <Album album={album} size="large" key={Math.random()} />
+              ))}
           </motion.div>
         </center>
       </div>

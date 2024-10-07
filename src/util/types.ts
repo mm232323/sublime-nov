@@ -20,6 +20,7 @@ export interface albumType {
   likes: number;
   views: number;
   links: string[];
+  types: string[];
 }
 export interface userType {
   name: string;
@@ -29,7 +30,7 @@ export interface userType {
   phone: number;
   followers: number;
   medals: string[];
-  jobTitle: string;
+  job_title: string;
   avatarName: string;
   albums: albumType[];
   follows: string[];

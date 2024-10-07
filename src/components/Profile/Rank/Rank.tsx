@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Rank.module.css";
 import Ranker from "./Ranker/Ranker";
+import Link from "next/link";
 export default async function Rank({
   email,
   type,
@@ -16,15 +17,24 @@ export default async function Rank({
     },
   });
   const rank = await rankRes.json();
+  console.log(rank);
   return (
     <div
       className={styles.rankContainer}
       style={type == "stranger" ? { alignSelf: "start" } : {}}
     >
       <h1>Rank {rank.user[1] + 1}</h1>
-      {rank.prevU[0] && <Ranker ranker={rank.prevU} />}
-      <Ranker ranker={rank.user} />
-      {rank.nextU[0] && <Ranker ranker={rank.nextU} />}
+      {rank.prevU[0] && (
+        <Link href={`/profile/${rank.prevU[0].userId}`}>
+          <Ranker ranker={rank.prevU} type="stranger" />
+        </Link>
+      )}
+      <Ranker ranker={rank.user} type="main" />
+      {rank.nextU[0] && (
+        <Link href={`/profile/${rank.nextU.userId}`}>
+          <Ranker ranker={rank.nextU} type="stranger" />
+        </Link>
+      )}
     </div>
   );
 }

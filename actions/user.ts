@@ -41,3 +41,16 @@ export async function handleFollowing(follower: string, following: string) {
   console.log(message);
   revalidatePath("/profile/[id]", "page");
 }
+
+export async function fetchUserFav(email: string) {
+  const response = await fetch("http://localhost:5800/user/get-fav", {
+    method: "POST",
+    body: JSON.stringify({ email }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const albums = await response.json();
+  console.log(albums.albums);
+  return albums.albums
+}

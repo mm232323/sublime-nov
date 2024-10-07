@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Button.module.css";
 import Link from "next/link";
-export default function Button({
+const Button = ({
   href,
   children,
   color,
@@ -9,7 +9,7 @@ export default function Button({
   href: string;
   children: string;
   color: string;
-}) {
+}) => {
   return (
     <Link href={href}>
       <button
@@ -19,4 +19,5 @@ export default function Button({
       </button>
     </Link>
   );
-}
+};
+export default Button;

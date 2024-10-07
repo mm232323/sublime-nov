@@ -51,7 +51,7 @@ export default async function Profile() {
               />
               <div className={styles.titles}>
                 <h1>{user.name.split(" ").slice(0, 3).join(" ")}</h1>
-                <p>{user.jobTitle}</p>
+                <p>{user.job_title}</p>
               </div>
             </div>
             <div className={styles.extraDetails}>

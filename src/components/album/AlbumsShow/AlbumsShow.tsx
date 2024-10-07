@@ -5,7 +5,7 @@ import AlbumReviewr from "../AlbumReviewer/AlbumReviewr";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { albumType } from "@/util/types";
 import { useRef } from "react";
-export default function AlbumsShow({ album }: { album: albumType }) {
+export default function AlbumsShow({ albums }: { albums: albumType[] }) {
   const containerRef = useRef<HTMLDivElement>();
   function scrollRight() {
     if (containerRef.current?.scrollLeft == 1750)
@@ -40,16 +40,9 @@ export default function AlbumsShow({ album }: { album: albumType }) {
         onClick={scrollLeft}
       />
       <div className={styles.albumsContainer} ref={containerRef}>
-        <AlbumReviewr album={album} />
-        <AlbumReviewr album={album} />
-        <AlbumReviewr album={album} />
-        <AlbumReviewr album={album} />
-        <AlbumReviewr album={album} />
-        <AlbumReviewr album={album} />
-        <AlbumReviewr album={album} />
-        <AlbumReviewr album={album} />
-        <AlbumReviewr album={album} />
-        <AlbumReviewr album={album} />
+        {albums.map((album) => (
+          <AlbumReviewr key={album.id} album={album} />
+        ))}
       </div>
       <IoIosArrowForward
         color="white"

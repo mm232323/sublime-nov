@@ -20,7 +20,7 @@
 .reportContainer {
  background-color: rgba(255, 255, 255, 0.08);
  width:783px;
- height:481px;
+ padding: 50px 0;
  border-radius:31px;
  border:1px white solid;
  position:relative;
@@ -32,6 +32,8 @@
  gap:20px
 }
 .police {
+ position:relative;
+ top:50px;
  width:330px;
  height:402px;
  align-self: flex-end;
