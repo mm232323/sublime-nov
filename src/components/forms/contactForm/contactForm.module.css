@@ -58,3 +58,23 @@
  font-weight:100;
  padding-bottom:5px;
 }
+@media (max-width:490px) {
+ .contactForm input,
+ .contactForm textarea,
+ .contactForm select {
+   width: 300px;
+   border-radius:15px;
+ }
+ .contactForm input::placeholder,
+ .contactForm textarea::placeholder {
+  font-size:16px;
+ }
+ .contactForm textarea {
+  max-width:300px;
+  min-width:300px;
+ }
+ .contactBut {
+  width:300px;
+  border-radius:12px;
+ }
+}

@@ -6,7 +6,9 @@ import { postReport } from "../../../../actions/main";
 import { AnimatePresence, motion } from "framer-motion";
 export default function ReportForm() {
   const [state, action] = useFormState(postReport, {
-    errors: { reportType: "", reportTitle: "", reportMessage: "" },
+    reportType: "",
+    reportTitle: "",
+    reportMessage: "",
   });
 
   return (

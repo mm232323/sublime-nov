@@ -1,10 +1,12 @@
 .bg {
  z-index: -2;
  position: absolute;
+ width:100%;
+ filter:blur(5px)
 }
 
 .descSec {
- height: 720px;
+ height: fit-content
 }
 
 .headphones {
@@ -21,7 +23,7 @@
  font-size: 25px;
  font-weight: 30;
  text-shadow: 0 0 9px rgba(255, 255, 255, 0.29);
- width: 770px;
+ width: 70%;
  position: relative;
  left: 50%;
  top: 70px;
@@ -30,9 +32,8 @@
  letter-spacing: 1.5px;
  line-height: 32px;
 }
-
 .audiosSec {
- height: 800px;
+ margin-bottom:200px;
 }
 
 .audiosSec h1,
@@ -58,16 +59,14 @@
 }
 
 .teamSec {
- position: relative;
- top: 100px;
- height: 1500px
+ margin-bottom: 200px;
 }
 
 .workersContainer {
  display: grid;
  grid-template-columns: 30% 30% 30%;
  position: relative;
- left: 50%;
+ left: 48%;
  top: 170px;
  transform: translateX(-50%);
  width: fit-content;
@@ -77,7 +76,7 @@
 .contactSec {
  padding-left:50px;
  display:flex;
- gap:180px;
+ gap:100px;
 }
 .contactSecTitle {
  font-size:71px;
@@ -107,4 +106,93 @@
 .contactSec button:hover {
  background-color: #0FB7C1;
  color:#09000E;
+}
+@media (max-width:1290px) {
+ .contactSec img {
+  transform:scale(.6)
+ }
+}
+@media(max-width:1210px) {
+ .audiosContainer {
+  grid-template-columns:50% 50%;
+ }
+}
+@media (max-width:1180px) {
+ .contactSec {
+  flex-direction:column;
+  align-items: center;
+  position:relative;
+  left:50%;
+  transform:translateX(-50%);
+  padding-left:0;
+  width:fit-content;
+  top:30px;
+  gap:70px;
+ }
+ .contentContainer {
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+ }
+ .contactSecTitle {
+  width:fit-content;
+ }
+}
+@media (max-width:1150px) {
+ .workersContainer {
+  grid-template-columns:50% 50%;
+ }
+}
+
+@media (max-width:860px) {
+ .audiosContainer {
+  column-gap:20px;
+ }
+}
+
+@media (max-width:810px) {
+ .aboutSublime {
+  width:90%;
+  margin-bottom:20px;
+ }
+}
+
+@media (max-width:780px) {
+ .audiosContainer {
+  grid-template-columns: 100%;
+ }
+}
+
+@media (max-width:730px) {
+ .workersContainer {
+  column-gap:45px;
+ }
+}
+
+@media (max-width:705px) {
+ .workersContainer {
+  grid-template-columns: 100%;
+ }
+}
+
+@media(max-width:600px) {
+ .aboutSublime{
+  font-size:20px;
+  position:relative;
+  top:-40px;
+ }
+ .headphones {
+  transform: translateX(-50%) scale(.7)
+ }
+ .contactSec img {
+  display:none;
+ }
+ .contactSec .contentContainer p {
+  width:90%
+ }
+}
+@media (max-width:440px) {
+ .contactSecTitle {
+  font-size:50px
+ }
 }

@@ -8,12 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function ContactForm() {
   const checkRef = useRef<HTMLInputElement>(null);
   const [state, action] = useFormState(postContact, {
-    errors: {
-      contactName: "",
-      contactEmail: "",
-      contactPhone: "",
-      contactMessage: "",
-    },
+    contactName: "",
+    contactEmail: "",
+    contactPhone: "",
+    contactMessage: "",
   });
   return (
     <form className={styles.contactForm} action={action}>

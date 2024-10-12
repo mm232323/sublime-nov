@@ -1,30 +1,30 @@
 "use server";
 
-import { albumInputsType } from "@/util/types";
 import axios from "axios";
 import { revalidatePath } from "next/cache";
+import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
-import rand from "random-key";
 export async function createAlbum(state: unknown, event: FormData) {
   const errors = { title: "", desc: "", audio: "", author: "", type: "" };
-  const {
-    title,
-    desc,
-    audio,
-    photo,
-    author,
-    type,
-    userEmail,
-  }: albumInputsType = Object.fromEntries(event);
+  const albumProps = Object.fromEntries(event) as {
+    title: string;
+    desc: string;
+    audio: File;
+    photo: File;
+    author: string;
+    type: string;
+    userEmail: string;
+  };
   const links: string = event.get("links") as string;
   const linksArr = links?.split(",");
-  if (!audio.size) errors.audio = "Place set an audio";
-  if (title.length < 5)
+  if (!albumProps.audio.size) errors.audio = "Place set an audio";
+  if (albumProps.title.length < 5)
     errors.title = "Title Most be greater than 5 characters";
-  if (desc.length < 10)
+  if (albumProps.desc.length < 10)
     errors.desc = "Description Most be greater than 10 characters";
-  if (!author.length) errors.author = "Please Set an Author";
-  if (!type.length || type == "Type") errors.type = "Please Choose Type";
+  if (!albumProps.author.length) errors.author = "Please Set an Author";
+  if (!albumProps.type.length || albumProps.type == "Type")
+    errors.type = "Please Choose Type";
   if (
     errors.title ||
     errors.desc ||
@@ -33,15 +33,23 @@ export async function createAlbum(state: unknown, event: FormData) {
     errors.type
   )
     return errors;
-  const id = rand.generate(12);
+  let id = await bcrypt.hash(
+    albumProps.desc.slice(0, 15) + albumProps.title.slice(0, 5),
+    20
+  );
+  id = id
+    .replaceAll("%", "")
+    .replaceAll("/", "")
+    .replaceAll("$", "")
+    .replaceAll(".", "");
   const output = {
-    name: title,
-    desc,
-    imgUrl: photo.name,
-    audioUrl: audio.name,
-    author,
+    name: albumProps.title,
+    desc: albumProps.desc,
+    imgUrl: albumProps.photo.name,
+    audioUrl: albumProps.audio.name,
+    author: albumProps.author,
     id,
-    type,
+    type: [albumProps.type.toLowerCase()],
     links: linksArr,
     likes: 0,
     views: 0,
@@ -49,7 +57,7 @@ export async function createAlbum(state: unknown, event: FormData) {
   };
   const response = await fetch("http://localhost:5800/create-album", {
     method: "POST",
-    body: JSON.stringify({ album: output, email: userEmail }),
+    body: JSON.stringify({ album: output, email: albumProps.userEmail }),
     headers: {
       "Content-Type": "application/json",
     },
@@ -59,15 +67,18 @@ export async function createAlbum(state: unknown, event: FormData) {
   console.log(messageRes);
   console.log("=======================");
   const imgData = new FormData();
-  imgData.append("image", photo);
-  const imgRes = await axios.post("http://localhost:5800/handle-img", imgData);
+  imgData.append("image", albumProps.photo);
+  const imgRes = await axios.post(
+    `http://localhost:5800/handle-img/${albumProps.userEmail}/${id}`,
+    imgData
+  );
   const imgMessage = await imgRes.data;
   console.log(imgMessage);
   console.log("=======================");
   const audioData = new FormData();
-  audioData.append("audio", audio);
+  audioData.append("audio", albumProps.audio);
   const audioRes = await axios.post(
-    "http://localhost:5800/handle-audio",
+    `http://localhost:5800/handle-audio/${albumProps.userEmail}/${id}`,
     audioData
   );
   const audioMessage = await audioRes.data;

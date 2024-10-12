@@ -4,7 +4,6 @@ import Container from "@/components/layout/pageContainer/Container";
 import NavBar from "@/components/layout/navBar/NavBar";
 import Image from "next/image";
 import { albumType } from "@/util/types";
-import axios from "axios";
 import AudioPlayer from "@/components/album/audioPlayer/AudioPlayer";
 import { FaEye, FaHeart, FaStar } from "react-icons/fa6";
 import { MdReport } from "react-icons/md";
@@ -34,16 +33,10 @@ export default async function AlbumPage({
       "Content-Type": "application/json",
     },
   });
+  const album = await albumRes.json();
+  console.log(album);
   const albumsRes = await fetch("http://localhost:5800/random-albums");
-  const album: albumType = await albumRes.json();
   const albums: albumType[] = (await albumsRes.json()).albums;
-  const audioRes = await axios.get(
-    `http://localhost:5800/albums/${album.audioUrl}`,
-    {
-      method: "GET",
-      responseType: "blob",
-    }
-  );
   return (
     <Container>
       <NavBar isAuthed={true} />
@@ -128,8 +121,8 @@ export default async function AlbumPage({
           <AlbumsShow
             albums={albums.filter((selectedAlbum) => {
               if (selectedAlbum.id == album.id) return false;
-              for (let i = 0; i < selectedAlbum.types.length; i++) {
-                if (album.types.includes(selectedAlbum.types[i])) return true;
+              for (let i = 0; i < selectedAlbum.types?.length; i++) {
+                if (album.types?.includes(selectedAlbum.types[i])) return true;
               }
               return false;
             })}

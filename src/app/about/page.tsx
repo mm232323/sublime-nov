@@ -10,7 +10,7 @@ export default async function About() {
   const res = await fetch("http://localhost:5800/about/audios");
   const audios = await res.json();
   return (
-    <main>
+    <main className={styles.pageContainer}>
       <Image
         src="/About/bg.png"
         alt="background"

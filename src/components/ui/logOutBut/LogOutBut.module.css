@@ -1,5 +1,5 @@
 .logOutBut,
-.miniLogOutBut {
+.miniLogOutBut,.screenLogOutBut {
  background-color:white;
  border:none;
  border-radius:100px;
@@ -10,6 +10,12 @@
  font-size:19px;
  cursor:pointer;
  transition-duration:.4s
+}
+.screenLogOutBut {
+ width:50px;
+}
+.screenLogOutBut {
+ display: none;
 }
 .icon {
  color:#09000E;
@@ -28,4 +34,13 @@
  position:relative;
  left:50%;
  transform:translateX(-50%)
+}
+@media (max-width:470px) {
+ .logOutBut,
+ .miniLogOutBut {
+  display:none;
+ }
+ .screenLogOutBut {
+  display: block;;
+ }
 }

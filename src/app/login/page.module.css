@@ -41,3 +41,26 @@
  width:165px;
  height:184px;
 }
+@media (max-width:900px) {
+ .loginContainer{
+  width:500px;
+ }
+ .devicesStyle1,.devicesStyle2 {
+  transform:scale(.6)
+ }
+ .devicesStyle2 {
+  right:-60px;
+  top:-100px;
+ }
+}
+@media (max-width:600px) {
+ .loginContainer {
+  width:100%;
+  border-radius:0;
+  border-left-width:0;
+  border-right-width:0;
+ }
+ .devicesStyle1,.devicesStyle2 {
+  display:none;
+ }
+}

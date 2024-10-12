@@ -13,7 +13,7 @@ import LinkWithIcon from "@/components/ui/linkWithIcon/LinkWithIcon";
 import LogOutBut from "@/components/ui/logOutBut/LogOutBut";
 import { useState } from "react";
 export default function NavBar({ isAuthed }: { isAuthed: boolean }) {
-  const [toggleNav, setToggleNav] = useState(false);
+  const [toggleNav, setToggleNav] = useState(true);
   // const [scrollY, setScrollY] = useState(0);
   // window.onscroll = () => {
   // setScrollY(window.scrollY);
@@ -61,7 +61,13 @@ export default function NavBar({ isAuthed }: { isAuthed: boolean }) {
           <IoIosAdd color="white" size={22} />
         </LinkWithIcon>
         {isAuthed ? (
-          <div style={{ left: !toggleNav ? -14 : 0, position: "relative" }}>
+          <div
+            style={{
+              left: !toggleNav ? -14 : 0,
+              position: "relative",
+              display: "flex",
+            }}
+          >
             <LogOutBut toggleNav={toggleNav} />
           </div>
         ) : (

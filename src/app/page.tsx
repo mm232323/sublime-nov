@@ -10,17 +10,18 @@ import LogOutBut from "@/components/ui/logOutBut/LogOutBut";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import Filters from "@/components/home/filters/Filters";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { albumType } from "@/util/types";
 import Album from "@/components/home/album/Album";
 import { fetchAlbums } from "../../actions/main";
-import { motion } from "framer-motion";
 import Container from "@/components/layout/pageContainer/Container";
 import { fetchAvatar } from "../../actions/user";
 import React from "react";
+import { IoMdClose } from "react-icons/io";
 export default function Home() {
   const { data: session } = useSession();
   const [toggleFilter, setToggleFilter] = useState(false);
+  const [toggleSearchBar, setToggleSearchBar] = useState(false);
   const [filters, setFilters] = useState<string[]>([]);
   const [avatar, setAvatar] = useState("");
   const [albums, setAlbums] = useState<albumType[]>([]);
@@ -45,11 +46,40 @@ export default function Home() {
     SetSearchText(searchRef.current?.value);
   };
   const handleFiltering = (filters: string[]) => {
-    console.log(filters);
     setFilters((prevFilters) => filters);
   };
+  const handleToggleSearchBar = () => setToggleSearchBar((prevTog) => !prevTog);
   return (
     <Container>
+      <AnimatePresence>
+        {toggleSearchBar && (
+          <motion.div
+            className={styles.searchBarMenu}
+            variants={{
+              show: { opacity: 1, filter: "blur(0)", y: 0 },
+              hide: { opacity: 0, filter: "blur(15px)", y: -60 },
+            }}
+            initial="hide"
+            animate="show"
+            exit="hide"
+          >
+            <input
+              type="text"
+              placeholder="search for novels, books, podcasts and albums"
+              className={styles.searchingBar2}
+              ref={searchRef}
+              onChange={handleSeachText}
+              defaultValue={searchRef.current?.value}
+            />
+            <IoMdClose
+              color="white"
+              size={25}
+              cursor="pointer"
+              onClick={handleToggleSearchBar}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <NavBar isAuthed={Boolean(session?.user)} />
       <div className={styles.pageContainer}>
         <div className={styles.head}>
@@ -57,6 +87,7 @@ export default function Home() {
             color="rgba(255,255,255,.7)"
             size={27.04}
             className={styles.searchIco}
+            onClick={handleToggleSearchBar}
           />
           <input
             type="text"

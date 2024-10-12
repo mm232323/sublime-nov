@@ -4,7 +4,7 @@ import axios from "axios";
 export async function setAvatar(state: unknown, event: FormData) {
   const avatar = event.get("avatar") as File;
   const email = event.get("email") as string;
-  if (avatar.size == 0) return;
+  if (avatar.size == 0) return false;
   const data = new FormData();
   data.append("image", avatar);
   const response = await axios.post(
@@ -52,5 +52,5 @@ export async function fetchUserFav(email: string) {
   });
   const albums = await response.json();
   console.log(albums.albums);
-  return albums.albums
+  return albums.albums;
 }

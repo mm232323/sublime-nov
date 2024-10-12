@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
     "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
     "deep-email-validator": "^0.1.21",
     "framer-motion": "^11.5.4",
     "next": "14.2.8",

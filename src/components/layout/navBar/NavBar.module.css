@@ -108,3 +108,9 @@
 .toggleArrowMini:hover {
  transform:scale(-1)
 }
+@media(max-width:930px) {
+ .toggleArrow,
+ .toggleArrowMini {
+  display:none;
+ }
+}

@@ -29,3 +29,13 @@
  gap:20px;
  align-items: center;
 }
+@media (max-width:370px) {
+ .audioTypeContainer {
+  padding:28px 20px;
+  width:320px;
+  
+ }
+ .audioTypeContainer span {
+  font-size:35px
+ }
+}

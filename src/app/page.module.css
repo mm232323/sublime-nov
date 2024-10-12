@@ -17,7 +17,8 @@
  position:absolute;
  left:63px;
 }
-.searchingBar {
+.searchingBar,
+.searchingBar2 {
  background-color:rgba(255,255,255,.075);
  border:none;
  width:769px;
@@ -27,10 +28,15 @@
  color:white;
  font-family:'__Nunito_1bd2a6', '__Nunito_Fallback_1bd2a6'
 }
-.searchingBar::placeholder {
+.searchingBar2 {
+ width:70%;
+}
+.searchingBar::placeholder,
+.searchingBar2::placeholder {
  opacity:60%;
 }
-.searchingBar:focus {
+.searchingBar:focus,
+.searchingBar2:focus {
  outline:none;
 }
 .filterIco {
@@ -67,4 +73,60 @@
  column-gap:20px;
  row-gap:30px;
  transition-duration:.3s;
+}
+
+.searchBarMenu {
+ width:100%;
+ height:80px;
+ background-color:#09000e5d;
+ position:absolute;
+ display: flex;
+ gap:30px;
+ justify-content: center;
+ align-items:center;
+ z-index:100;
+ left:0;
+ top:0;
+ backdrop-filter: blur(10px);
+}
+
+@media(max-width:1400px) {
+ .head {
+  width:100%
+ }
+ .searchingBar {
+  width:459px;
+  font-size:15px;
+ }
+}
+
+@media (max-width:1080px) {
+ .searchingBar {
+  width:350px;
+ }
+ .albumsContainer {
+  grid-template-columns: 50% 50%;
+ }
+}
+@media (max-width:800px) {
+ .head {
+  justify-content:center;
+  padding-left:0;
+ }
+ .searchingBar {
+  display:none;
+ }
+ .searchIco {
+  position:relative;
+  left:0;
+  cursor: pointer;
+ }
+ .filterIco {
+  position:relative;
+ }
+}
+@media (max-width:700px) {
+ .albumsContainer {
+  grid-template-columns: 100%
+ }
 }

@@ -39,7 +39,7 @@ export default function Album({
               }
             >
               <Image
-                src={"http://localhost:5800/albums" + album.imgUrl}
+                src={"http://localhost:5800/albums/" + album.imgUrl}
                 alt="album image"
                 width={size === "small" ? 510 : 1000}
                 height={size === "small" ? 357 : 700}

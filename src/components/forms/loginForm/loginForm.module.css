@@ -37,7 +37,7 @@
  font-weight:100;
  cursor:pointer;
 }
-.signupBut:hover {
+.loginBut:hover {
  color:#0A0918;
  background: white;
 }
@@ -46,4 +46,34 @@
  font-size:16px;
  font-weight:100;
  padding-bottom:5px;
+}
+@media (max-width:900px) {
+ .loginForm {
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%)
+ }
+ .loginForm input, 
+ .loginForm select {
+  width:400px;
+  border-radius:12px;
+ }
+ .loginBut {
+  width:400px;
+  border-radius:15px;
+ }
+}
+@media(max-width:430px) {
+ .loginForm input, 
+ .loginForm select {
+  width:250px;
+  border-radius:7px;
+ }
+ .loginBut {
+  width:250px;
+  border-radius:10px;
+ }
+ .loginForm input::placeholder {
+  font-size:16px;
+ }
 }

@@ -6,7 +6,7 @@ import styles from "./AvatarPicker.module.css";
 import { setAvatar } from "../../../../actions/user";
 import { useFormState } from "react-dom";
 export default function AvatarPicker({ email }: { email: string }) {
-  const [state, action] = useFormState(setAvatar, {});
+  const [state, action] = useFormState(setAvatar, true);
   const avatarRef = useRef<HTMLInputElement>(null)!;
   const submitRef = useRef<HTMLButtonElement>(null)!;
   function handleChange() {
@@ -17,6 +17,7 @@ export default function AvatarPicker({ email }: { email: string }) {
       <p
         className={styles.uploadBut}
         onClick={() => avatarRef.current?.click()}
+        style={!state ? { color: "tomato" } : {}}
       >
         click here to upload avatar
       </p>

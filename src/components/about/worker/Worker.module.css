@@ -23,3 +23,20 @@
  opacity:70%;
  font-size:18px;
 }
+@media(max-width:370px) {
+ .workerContainer {
+  gap:5px;
+ }
+ .workerContainer img {
+  transform:scale(.7)
+ }
+ .workerContainer img:hover {
+  transform:scale(.8)
+ }
+ .workerContainer .workerName {
+  font-size:35px;
+ }
+ .workerContainer p {
+  font-size:16px;
+ }
+}

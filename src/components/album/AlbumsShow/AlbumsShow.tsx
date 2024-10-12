@@ -6,7 +6,7 @@ import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { albumType } from "@/util/types";
 import { useRef } from "react";
 export default function AlbumsShow({ albums }: { albums: albumType[] }) {
-  const containerRef = useRef<HTMLDivElement>();
+  const containerRef = useRef<HTMLDivElement>(null);
   function scrollRight() {
     if (containerRef.current?.scrollLeft == 1750)
       containerRef.current?.scrollBy({
