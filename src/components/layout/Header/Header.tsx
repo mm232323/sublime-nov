@@ -105,18 +105,18 @@ export default function Header({
                   className={styles.closeIco}
                   onClick={handleToggle}
                 />
-                  <div className={styles.extraIn}>
-                    {!path.includes("about") && (
-                      <Link href="/about">
-                        <h1>About</h1>
-                      </Link>
-                    )}
-                    {!path.includes("contact") && (
-                      <Link href="/contact">
-                        <h1>Contact</h1>
-                      </Link>
-                    )}
-                  </div>
+                <div className={styles.extraIn}>
+                  {!path.includes("about") && (
+                    <Link href="/about">
+                      <h1>About</h1>
+                    </Link>
+                  )}
+                  {!path.includes("contact") && (
+                    <Link href="/contact">
+                      <h1>Contact</h1>
+                    </Link>
+                  )}
+                </div>
 
                 {!path.includes("signup") && (
                   <Link href="/signup">

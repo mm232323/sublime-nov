@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "@/components/layout/Header/Header";
+// import Header from "@/components/layout/Header/Header";
 import Image from "next/image";
 import styles from "./page.module.css";
 import AudioType from "@/components/about/audioType/AudioType";
@@ -18,7 +18,7 @@ export default async function About() {
         height={3782}
         className={styles.bg}
       />
-      <Header auth={false} id={null} />
+      {/* <Header auth={false} id={null} /> */}
       <section className={styles.descSec}>
         <Image
           src="/About/headphone.png"
